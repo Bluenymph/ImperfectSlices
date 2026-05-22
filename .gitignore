@@ -5,6 +5,8 @@
 # Recommended: add any editor/OS/tool-specific ignore rules from the Global/ templates as needed.
 # See: https://github.com/github/gitignore/tree/main/Global
 #
+
+
 .utmp/
 /[Ll]ibrary/
 /[Tt]emp/
@@ -88,6 +90,8 @@ InitTestScene*.unity*
 /[Aa]ssets/StreamingAssets/aa*
 /[Aa]ssets/AddressableAssetsData/link.xml*
 /[Aa]ssets/Addressables_Temp*
+/[Aa]ssets/[Rr]esources/*
+!/[Aa]ssets/[Rr]esources/.gitkeep
 # By default, Addressables content builds will generate addressables_content_state.bin
 # files in platform-specific subfolders, for example:
 # /Assets/AddressableAssetsData/OSX/addressables_content_state.bin
