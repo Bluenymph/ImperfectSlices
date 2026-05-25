@@ -1,73 +1,116 @@
-using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Cuchillo : MonoBehaviour
 {
-    [Header("Movement Configuration")]
-    [SerializeField] private float cutLength = 0.3f;
-    [SerializeField] private float cutRotation = 60f;
-    [SerializeField] private float cutOffset = 0.15f;
 
-    [Header("Time Configuration")]
-    [SerializeField] private float downTime = 0.1f;
-    [SerializeField] private float upTime = 0.3f;
+    [Header("Properties")] 
+    [SerializeField] private Transform cutPoint;
+    [SerializeField] private LayerMask cutLayer;
+    [SerializeField] private float cutDistance = 2f;
+    public float knifeForce = 1f;
 
     private Vector3 _originalPos;
     private Quaternion _originalRot;
-    private bool _isCutting = false;
+    private Animator _animator;
+    
+    private static readonly int IsCuttingHash = Animator.StringToHash("isCutting");
+    private static readonly int SliceSpeedHas = Animator.StringToHash("sliceSpeed");
+    
+    private void OnEnable()
+    {
+        GameManager.OnAddScoreMultiplier += MoreSpeed;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnAddScoreMultiplier -= MoreSpeed;
+    }
 
     void Start()
     {
         _originalPos = transform.localPosition;
         _originalRot = transform.localRotation;
+        _animator =  GetComponent<Animator>();
     }
 
     void Update()
     {
-        if (Input.GetMouseButton(0) && !_isCutting)
+        if (Input.GetMouseButton(0))
         {
-            StartCoroutine(AnimarCorteCompleto());
+            _animator.SetBool(IsCuttingHash, true);
+        }
+        else
+        {
+            _animator.SetBool(IsCuttingHash, false);
         }
     }
 
-    IEnumerator AnimarCorteCompleto()
+    public void EndCutting()
     {
-        _isCutting = true;
-
-        Vector3 finalPos = _originalPos + Vector3.down * cutLength;
-        finalPos.x -= cutOffset;
-        Quaternion finalRot = _originalRot * Quaternion.Euler(0, 0, cutRotation);
-
-        float time = 0;
-        while (time < downTime)
-        {
-            float t = time / downTime;
-            float tSmooth = t * t; 
-
-            transform.localPosition = Vector3.Lerp(_originalPos, finalPos, tSmooth);
-            transform.localRotation = Quaternion.Slerp(_originalRot, finalRot, tSmooth);
-            
-            time += Time.deltaTime;
-            yield return null;
-        }
-        transform.localPosition = finalPos;
-        transform.localRotation = finalRot;
-
-        time = 0;
-        while (time < upTime)
-        {
-            float t = time / upTime;
-            float tSmooth = t * (2 - t); 
-
-            transform.localPosition = Vector3.Lerp(finalPos, _originalPos, tSmooth);
-            transform.localRotation = Quaternion.Slerp(finalRot, _originalRot, tSmooth);
-            
-            time += Time.deltaTime;
-            yield return null;
-        }
         transform.localPosition = _originalPos;
         transform.localRotation = _originalRot;
+    }
 
-        _isCutting = false;
+    public void ExeSlice()
+    {
+        if (Physics.Raycast(cutPoint.position, -cutPoint.up, out RaycastHit hit, cutDistance, cutLayer))
+        {
+            Rigidbody rb = hit.collider.GetComponent<Rigidbody>();
+            
+            Vector3 direccionLateral = (Random.value < 0.5f) ? hit.collider.transform.right : -hit.collider.transform.right;
+            
+            hit.collider.isTrigger = false;
+            rb.isKinematic = false; 
+            rb.useGravity = true;
+            
+            if (hit.collider.CompareTag("HeavyIngredient"))
+            { 
+                direccionLateral += Vector3.up * 0.5f;
+                rb.AddForce(direccionLateral * knifeForce * 2, ForceMode.Impulse);    
+            }
+            else
+            {
+                rb.AddForce(direccionLateral * knifeForce, ForceMode.Impulse);
+            }
+            rb.AddTorque(Random.insideUnitSphere * 5f, ForceMode.Impulse);
+
+            if (hit.collider.CompareTag("Negative"))
+            {
+                GameManager.Instance.RemoveScore(10);
+            }
+            else
+            {
+                GameManager.Instance.AddScore(10);
+            }
+            Debug.Log(GameManager.Instance.score);
+        }
+    }
+    
+
+    private void MoreSpeed(int multiplier)
+    {
+        switch (multiplier)
+        {
+            case 1:
+                _animator.SetFloat(SliceSpeedHas, 1.0f);
+                break;
+            case 2:
+                _animator.SetFloat(SliceSpeedHas, 1.1f);
+                knifeForce = 3.1f;
+                break;
+            case 3:
+                _animator.SetFloat(SliceSpeedHas, 1.2f);
+                knifeForce = 3.2f;
+                break;
+            case 4:
+                _animator.SetFloat(SliceSpeedHas, 1.3f);
+                knifeForce = 3.3f;
+                break;
+            case 5:
+                _animator.SetFloat(SliceSpeedHas, 1.4f);
+                knifeForce = 3.4f;
+                break;
+        }
     }
 }

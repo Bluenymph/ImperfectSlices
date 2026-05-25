@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8e56e87b2217bc42b95eea46c27a5d1, type: 3}
+  m_Name: Soup
+  m_EditorClassIdentifier: 
+  dishName: Sopa
+  dishIcon: {fileID: 0}
+  ingredients:
+  - {fileID: 11400000, guid: 07cd8f3a619aee04eb5253436104cc26, type: 2}
+  - {fileID: 11400000, guid: 00f6239eec738e54d9f148b9bb28bdbc, type: 2}
+  - {fileID: 11400000, guid: 76f7fedc8b736ce429907043a247580c, type: 2}
