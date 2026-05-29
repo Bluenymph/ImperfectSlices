@@ -5,7 +5,6 @@ using System.Collections.Generic;
 public class RecipeData : ScriptableObject
 {
     public string dishName;
-    public Sprite dishIcon;
     public List<IngredientData> positiveIngredients;
     public List<IngredientData> negativeIngredients;
     public int maxScore = 0;

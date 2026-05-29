@@ -6,6 +6,8 @@ TagManager:
   tags:
   - HeavyIngredient
   - Negative
+  - Spawner
+  - CuttingBoard
   layers:
   - Default
   - TransparentFX

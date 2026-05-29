@@ -9,4 +9,5 @@ public class IngredientData : ScriptableObject
     public string IngredientName;
     public Sprite IngredientIcon;
     public GameObject prefabASpawnear; 
+    public GameObject prefabSlice; 
 }

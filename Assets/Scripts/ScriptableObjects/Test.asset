@@ -13,10 +13,8 @@ MonoBehaviour:
   m_Name: Test
   m_EditorClassIdentifier: 
   dishName: Sopa
-  dishIcon: {fileID: 0}
   positiveIngredients:
-  - {fileID: 11400000, guid: 76f7fedc8b736ce429907043a247580c, type: 2}
-  - {fileID: 11400000, guid: 07cd8f3a619aee04eb5253436104cc26, type: 2}
+  - {fileID: 11400000, guid: d5bc45f3b3646c94f9145c6cac919846, type: 2}
   negativeIngredients:
-  - {fileID: 11400000, guid: 5edad2be6d624064584fbcb40f348ba2, type: 2}
-  maxScore: 500
+  - {fileID: 11400000, guid: e2094db47b36dac43a8b9b2148a2b558, type: 2}
+  maxScore: 1000

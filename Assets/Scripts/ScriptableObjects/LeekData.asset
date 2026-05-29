@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b51ec7b9b33d34b87fb5e2619ef656, type: 3}
   m_Name: LeekData
   m_EditorClassIdentifier: 
-  IngredientName: 
-  IngredientIcon: {fileID: 0}
+  IngredientName: Leek
+  IngredientIcon: {fileID: 21300000, guid: 1007caef06202ca459dc3df7a0a9e75e, type: 3}
+  prefabASpawnear: {fileID: 8867440219299304553, guid: 4abf05df5a4080b43abc17c8945dab5e, type: 3}
+  prefabSlice: {fileID: 3943005655794530243, guid: 849436b9b1887b147ac9c5f869ea4b39, type: 3}

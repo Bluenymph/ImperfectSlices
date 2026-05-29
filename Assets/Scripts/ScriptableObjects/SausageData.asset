@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5b51ec7b9b33d34b87fb5e2619ef656, type: 3}
+  m_Name: SausageData
+  m_EditorClassIdentifier: 
+  IngredientName: Sausage
+  IngredientIcon: {fileID: 21300000, guid: a914a439c67ddc14daba2c7a527599ce, type: 3}
+  prefabASpawnear: {fileID: 8867440219299304553, guid: b1e3a154c45fd3343b8634b9dbb67c84, type: 3}
+  prefabSlice: {fileID: 3943005655794530243, guid: fd51924f37d084543871e20e80be5d06, type: 3}

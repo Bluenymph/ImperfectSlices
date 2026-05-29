@@ -51,6 +51,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   cutDistance: 2
+  cutParticles: {fileID: 4645516940670256156, guid: 07f09548475bd4e4db530acaa4d6031f, type: 3}
   knifeForce: 1
 --- !u!95 &7112683502108129940
 Animator:

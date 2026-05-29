@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8e56e87b2217bc42b95eea46c27a5d1, type: 3}
+  m_Name: Vege
+  m_EditorClassIdentifier: 
+  dishName: Estofado vegano
+  positiveIngredients:
+  - {fileID: 11400000, guid: 07cd8f3a619aee04eb5253436104cc26, type: 2}
+  - {fileID: 11400000, guid: 95976ef7308a8714ba3d71c7403f253e, type: 2}
+  - {fileID: 11400000, guid: 0c7dd5e1de220294eb9d95193823904b, type: 2}
+  negativeIngredients:
+  - {fileID: 11400000, guid: 84dd5481e85eb1c4883af3444df3f2e0, type: 2}
+  - {fileID: 11400000, guid: e2094db47b36dac43a8b9b2148a2b558, type: 2}
+  maxScore: 600
